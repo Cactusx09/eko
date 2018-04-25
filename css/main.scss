@@ -1840,6 +1840,11 @@ section{
                 @include flex(sb,c);
                 width: 100%;
                 cursor: pointer;
+                color: $gr;
+                transition: $t;
+                &:hover{
+                    color: $b;
+                }
             }
             &Body{
                 transition: max-height $t, margin $t/2, opacity $t;
@@ -1850,6 +1855,10 @@ section{
                     display: block;
                     color: $gr;
                     font-size: .84rem;
+                    transition: $t;
+                    &:hover{
+                        color: $b;
+                    }
                     &:not(:last-of-type){
                         margin-bottom: 0.4rem;
                     }
@@ -2165,9 +2174,19 @@ section{
 
 //catalog
 .s_catalog{
+    .sticky-wrapper{
+        margin-bottom: 1rem;
+        &.is-sticky{
+            .s_catalog__filter{
+
+            }
+        }
+    }
     &__filter{
         @include flex(fs,c,$w:w);
         margin-bottom: 2rem;
+        background-color: $bg;
+        padding: 0.5rem 0 0.1rem;
         a{
             font-weight: 500;
             font-size: 0.875rem;
@@ -2307,6 +2326,7 @@ section{
             width: 100%;
             padding-bottom: 89%;
             border-radius: 0.938rem;
+            height: 300px;
         }
     }
 
@@ -2478,13 +2498,18 @@ section{
     &__body{
         @include flex(fs,s,$w:w);
         margin: -10px -10px 1.5rem;
+        figcaption{
+            display: none;
+        }
+        figure{
+            width: calc(50% - 20px);
+            margin: 10px;
+            overflow: hidden;
+            box-shadow: 0 0.625rem 1.313rem rgba(53, 59, 68, 0.04);
+            border-radius: 0.938rem;
+        }
     }
     &__item{
-        width: calc(50% - 20px);
-        margin: 10px;
-        box-shadow: 0 0.625rem 1.313rem rgba(53, 59, 68, 0.04);
-        border-radius: 0.938rem;
-        padding-bottom: 33%;
         position: relative;
         z-index: 0;
         background-size: cover;
@@ -2492,12 +2517,38 @@ section{
         background-position: center;
         transition: $t;
         overflow: hidden;
-        img{
+        display: block;
+        height: 267px;
+        .g_zoom{
             position: absolute;
-            z-index: -9;
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
+            left: 50%;
+            top: 50%;
+            margin-left: -25px;
+            margin-top: -25px;
+            z-index: 2;
+            img{
+                margin-bottom: 0;
+                border-radius: 0;
+            }
+        }
+        >img{
+            width: 100%;
+        }
+        &:hover{
+            .g_zoom{
+                opacity: 1;
+                transform: none;
+                img{
+                    transform: none;
+                }
+            }
+        }
+        img{
+//            position: absolute;
+//            z-index: -9;
+//            opacity: 0;
+//            visibility: hidden;
+//            pointer-events: none;
         }
         &:hover{
             box-shadow: none;
@@ -2830,12 +2881,12 @@ section{
         @include flex(fs,s);
         margin-top: 1.5rem;
         a{
-            width: 80px;
-            padding-left: 0.7rem;
-            padding-right: 0.5rem;
+//            width: 80px;
+//            padding-left: 0.7rem;
+//            padding-right: 0.5rem;
             border-radius: 0.875rem;
             @include flex(fs,c);
-            height: 27px;
+//            height: 27px;
             transition: $t;
             &:hover{
                 box-shadow: 0 0.5rem 1.313rem rgba(53, 59, 68, 0.2);
@@ -3137,7 +3188,51 @@ section{
     }
 }
 
-
+//faq
+.s_faq{
+    .s_reviews__item{
+        cursor: pointer;
+        &._active{
+            .s_reviews__item{
+                &_head{
+                    margin-bottom: .8rem;
+                    h5{
+                        color: $b;
+                    }
+                    i{
+                        transform: rotate(180deg);
+                    }
+                }
+                &_body{
+                    max-height: 500px;
+                    opacity: 1;
+                }
+            }
+        }
+        &_head{
+            @include flex(sb,c);
+            transition: $t/2;
+            h5{
+                margin-bottom: 0;
+                transition: $t;
+            }
+            i{
+                margin-left: 1rem;
+                transition: $t;
+            }
+            svg{
+                height: auto;
+                width: 17px;
+            }
+        }
+        &_body{
+            overflow: hidden;
+            max-height: 0;
+            transition: $t;
+            opacity: 0;
+        }
+    }
+}
 
 
 .overlay{
@@ -3254,6 +3349,9 @@ section{
                 height: 130px;
                 border-radius: 0.938rem;
                 margin-right: 1.5rem;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
             }
             &_right{
                 text-align: left;
@@ -4113,7 +4211,7 @@ section{
             bottom: 0;
             left: 0;
             width: 100%;
-            background-color: $g;
+            background-color: #25D366;
             border-radius: 0;
             margin-left: 0;
             padding: 0.7rem 0 .6rem;

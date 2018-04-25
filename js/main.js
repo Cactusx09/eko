@@ -9,6 +9,18 @@ $(document).ready(function(){
         wow.init();
     }
 
+    if(getMobileOperatingSystem!=null){
+        $('.header__nav_wrp').sticky({
+            zIndex: 999
+        });
+        var bottom = $(document).height() - $('.s_catalog__body').outerHeight();
+        $('.s_catalog__filter').sticky({
+            zIndex: 997,
+            topSpacing: $('.header__nav_wrp').outerHeight(),
+            bottomSpacing: bottom
+        });
+    }
+
     ////sliders
     //main
     if($('.s_main__slider').length){
@@ -344,6 +356,7 @@ $(document).ready(function(){
         if(name=="buy"){
             $('.popup_buy__item h5').html($(this).data('item'));
             $('.popup_buy__item_row>span').html($(this).data('price'));
+            $('.popup_buy__item_left').attr('style', 'background-image: url('+ $(this).data('img') +')');
         }
         popup.find('form').trigger( 'reset' );
         $('.popup.popup_'+name+', .overlay').addClass('_visible');
@@ -359,9 +372,12 @@ $(document).ready(function(){
     });
 
     //main menu sub
-    $('.s_main__menu_item._sub').click(function(e){
+    $('.s_main__menu_item._sub').on('mouseenter', function(e){
         e.preventDefault();
-        $(this).toggleClass('_active');
+        $(this).addClass('_active');
+    }).on("mouseleave", function(e){
+        e.preventDefault();
+        $(this).removeClass('_active');
     });
 
     //header mobile nav
@@ -520,6 +536,11 @@ $(document).ready(function(){
         });
         var ret = 100 - total_vals;
         $(this).closest('.flexibels').find('.bg').find('span').text(ret+"%");
+    });
+
+    //faq click
+    $('.s_faq .s_reviews__item').click(function(){
+        $(this).toggleClass('_active');
     });
 });
 
