@@ -204,7 +204,7 @@ $(document).ready(function(){
             submitHandler: function (form) {
                 var data = new FormData(it[0]);
                 $.ajax({
-                    url: 'mail.php',
+                    url: '/mail.php',
                     type: 'POST',
                     data: data,
                     cache: false,
