@@ -423,10 +423,10 @@ $(document).ready(function(){
         if(el==0){
             px = 0;
         }else{
-            px = $('.'+el).offset().top - 40;
+            px = $(el).offset().top - 40;
         }
-        location.href = '#' + el;
         $('body,html').stop().animate({scrollTop:px},500);
+        location.href = el;
     });
 
     //input number
