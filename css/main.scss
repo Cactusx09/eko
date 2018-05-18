@@ -3408,6 +3408,7 @@ section{
     max-height: 2.63rem;
     overflow: hidden;
     width: 300px;
+  max-width: 100%;
     position: relative;
     transition: $t;
     &.colores {
@@ -3596,7 +3597,7 @@ section{
         color: $db;
         display: flex;
         align-items: center;
-        font-size: 14px;
+        font-size: 16px;
         padding-right: 15px;
         transition: $t;
         position: relative;
@@ -4239,7 +4240,7 @@ section{
             background-color: #25D366;
             border-radius: 0;
             margin-left: 0;
-            padding: 0.7rem 0 .6rem;
+            padding: 1rem 0 0.9rem;
             path{
                 fill: #fff;
             }
